@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    background: linear-gradient(135deg, #f0f8ff, #cce7ff);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 50px;
+    color: #333;
+}
+
+.us, .cs {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.button {
+    background-color: #ffffff;
+    border: 2px solid #4682b4;
+    border-radius: 15px;
+    margin: 20px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    display: inline-block;
+}
+
+.button img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.button:hover {
+    background-color: #4682b4;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+}
+
+#result, #User, #computer {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+    </style>
+</head>
+<body>
+    <p class="us"><span style="padding: 40px ;">UserScore</span>&nbsp;<span id="u">0</span></p>
+    <p class="cs"><span style="padding: 40px ;">ComputerScore</span>&nbsp;<span id="c">0</span></p>
+    <button class="button" onclick="Rock()"><img style="margin-top: 5px; width: 100px; height: 100px;" src="https://media.geeksforgeeks.org/wp-content/uploads/20210705223618/default.jpeg" alt="Rock"><br> Rock</button>
+    <button class="button" onclick="Paper()"><img style="margin-top: 5px; width: 100px; height: 100px;" src="https://media.geeksforgeeks.org/wp-content/uploads/20210705223645/paper.jpeg" alt="Paper"><br> Paper</button>
+    <button class="button" onclick="Scissor()"><img style="margin-top: 5px; width: 100px; height: 100px;" src="https://media.geeksforgeeks.org/wp-content/uploads/20210705223721/scissor.jpeg" alt="Scissor"><br> Scissor</button>
+    <p style="padding: 10px ;" class="su" id="User">User: </p>
+    <p style="padding: 10px ;" class="su" id="computer" >Computer: </p>
+    <p style="padding: 10px ; color: rgb(33, 228, 33);" class="su" id="result" >Result: </p>
+
+
+
+    <script>
+
+        
+        // function a(b){
+        //     console.log("hello");
+        //     b();
+        // }
+        // function b(){
+        //     console.log("hiii");
+        // }
+        // setTimeout(()=>{
+        //     a(b);
+        // },2000)
+        
+// function greet(name, B){
+//     console.log("Hi" + " " + name);
+//     B();
+// }
+// function SayBye(){
+//     console.log("Bye");
+// }
+// greet("hiiii",SayBye);
+
+
+
+// //Math Function
+// console.log(Math.round (4.0))
+// console.log(Math.ceil(4.1))
+// console.log(Math.floor(4.99))
+// console.log(Math.random(2.4))
+
+
+// Rock Ppaper Sissor 
+
+
+let UserScore =0;
+let ComputerScore =0;
+function checkuserscore(score){
+    if(score==10){
+        alert("User Win the Battle!")
+                document.getElementById("result").innerHTML="User Win the Battle!"
+                setTimeout(()=>{
+                 UserScore=0;
+                ComputerScore=0;
+                document.getElementById("c").innerHTML=ComputerScore;
+                document.getElementById("u").innerHTML=UserScore;
+                document.getElementById("result").innerHTML = "Game reset. Play again!";
+                document.getElementById("User").innerHTML = "User:";
+                document.getElementById("computer").innerHTML = "Computer:";
+                },500);
+               
+    }
+}
+
+
+function checkcomputerscore(score){
+    if(score==10){
+                alert("Computer Win the Battle!")
+                document.getElementById("result").innerHTML="Computer Win the Battle!"
+                setTimeout(()=>{
+                UserScore=0;
+                ComputerScore=0;
+                document.getElementById("c").innerHTML=ComputerScore;
+                document.getElementById("u").innerHTML=UserScore;
+                document.getElementById("result").innerHTML = "Game reset. Play again!";
+                document.getElementById("User").innerHTML = "User:";
+                document.getElementById("computer").innerHTML = "Computer:";
+                },500);
+    }
+}
+
+function Rock(){
+const num = (Math.round(Math.random()*100))
+console.log(num)
+document.getElementById("User").innerHTML=`User: Rock`;
+let Computer =" "
+if(num >=0 && num<=33){
+    Computer="Rock"
+}
+else if(num>=34 && num<=66){
+    Computer="Paper"
+}
+else{
+    Computer="Scissor"
+}
+console.log(Computer)
+document.getElementById("computer").innerHTML=`Computer: ${Computer}`;
+
+let Result=""
+
+if(Computer==="Rock"){
+    Result="Tie"
+}
+else if(Computer==="Paper"){
+    Result="Computer Win"
+    ComputerScore++;
+    console.log(`ComputerScore=${ComputerScore}`)
+    checkcomputerscore(ComputerScore)
+    document.getElementById("c").innerHTML=ComputerScore;
+   }
+else{
+    Result="User Win"
+    UserScore++;
+    console.log(`UserScore=${UserScore}`)
+    checkuserscore(UserScore)
+    document.getElementById("u").innerHTML=UserScore;
+}
+console.log(`user Selected=Rock 
+Computer selected=${Computer} 
+Result= ${Result}`)
+document.getElementById("result").innerHTML=`Result: ${Result}`;
+}
+
+
+
+function Paper(){
+    const num = (Math.round(Math.random()*100))
+console.log(num)
+document.getElementById("User").innerHTML=`User: Paper`;
+let Computer =" "
+if(num >=0 && num<=33){
+    Computer="Rock"
+}
+else if(num>=34 && num<=66){
+    Computer="Paper"
+}
+else{
+    Computer="Scissor"
+}
+console.log(Computer)
+document.getElementById("computer").innerHTML=`Computer: ${Computer}`;
+
+
+let Result=""
+
+if(Computer==="Rock"){
+    Result="User Win"
+    UserScore++;
+    console.log(`UserScore=${UserScore}`)
+    checkuserscore(UserScore);
+    document.getElementById("u").innerHTML=UserScore;
+        
+}
+else if(Computer==="Paper"){
+    Result="Tie"
+}
+else{
+    Result="Computer Win"
+    ComputerScore++;
+    console.log(`ComputerScore=${ComputerScore}`)
+    checkcomputerscore(ComputerScore)
+    document.getElementById("c").innerHTML=ComputerScore;
+    
+   
+}
+console.log(`user Selected=Paper 
+Computer selected=${Computer} 
+Result= ${Result}`)
+document.getElementById("result").innerHTML=`Result: ${Result}`;
+}
+
+
+
+function Scissor(){
+const num = (Math.round(Math.random()*100))
+console.log(num)
+document.getElementById("User").innerHTML=`User: Scissor`;
+let Computer =" "
+if(num >=0 && num<=33){
+    Computer="Rock"
+}
+else if(num>=34 && num<=66){
+    Computer="Paper"
+}
+else{
+    Computer="Scissor"
+}
+console.log(Computer)
+document.getElementById("computer").innerHTML=`Computer: ${Computer}`;
+
+let Result=""
+
+if(Computer==="Rock"){
+    Result="Computer Win"
+        ComputerScore++;
+        console.log(`ComputerScore=${ComputerScore}`)
+        checkcomputerscore(ComputerScore)
+        document.getElementById("c").innerHTML=ComputerScore;
+        
+}
+else if(Computer==="Paper"){
+    Result="User Win"
+    UserScore++;
+    console.log(`UserScore=${UserScore}`)
+       checkuserscore(UserScore);
+    document.getElementById("u").innerHTML=UserScore;
+ 
+
+}
+else{
+    Result="Tie"
+}
+console.log(`user Selected=Scissor 
+Computer selected=${Computer} 
+Result= ${Result}`)
+document.getElementById("result").innerHTML=`Result: ${Result}`;
+
+}
+
+
+
+
+
+
+    </script>
+</body>
+</html>
